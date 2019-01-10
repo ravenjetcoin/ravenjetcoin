@@ -1,0 +1,33 @@
+# /etc/conf.d/marlind: config file for /etc/init.d/marlind
+
+# Config file location
+#MARLIND_CONFIGFILE="/etc/marlin/marlin.conf"
+
+# What directory to write pidfile to?  (created and owned by $MARLIND_USER)
+#MARLIND_PIDDIR="/var/run/marlind"
+
+# What filename to give the pidfile
+#MARLIND_PIDFILE="${MARLIND_PIDDIR}/marlind.pid"
+
+# Where to write marlind data (be mindful that the blockchain is large)
+#MARLIND_DATADIR="/var/lib/marlind"
+
+# User and group to own marlind process
+#MARLIND_USER="marlin"
+#MARLIND_GROUP="marlin"
+
+# Path to marlind executable
+#MARLIND_BIN="/usr/bin/marlind"
+
+# Nice value to run marlind under
+#MARLIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#MARLIND_OPTS=""
+
+# The timeout in seconds OpenRC will wait for marlind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+MARLIND_SIGTERM_TIMEOUT=60

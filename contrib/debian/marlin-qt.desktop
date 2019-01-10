@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Marlin Core
+Comment=Connect to the Marlin P2P Network
+Comment[de]=Verbinde mit dem Marlin peer-to-peer Netzwerk
+Comment[fr]=Marlin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Marlin, eşten eşe kriptografik sanal para birimi
+Exec=marlin-qt %u
+Terminal=false
+Type=Application
+Icon=marlin128
+MimeType=x-scheme-handler/marlin;
+Categories=Office;Finance;

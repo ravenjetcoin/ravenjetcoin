@@ -1,0 +1,81 @@
+policy_module(marlin, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type marlin_t;
+type marlin_exec_t;
+init_daemon_domain(marlin_t, marlin_exec_t)
+
+permissive marlin_t;
+
+type marlin_initrc_exec_t;
+init_script_file(marlin_initrc_exec_t)
+
+type marlin_conf_t;
+files_type(marlin_conf_t)
+
+type marlin_var_lib_t;
+files_type(marlin_var_lib_t)
+
+type marlin_var_run_t;
+files_type(marlin_var_run_t)
+
+type marlin_port_t;
+corenet_port(marlin_port_t)
+
+########################################
+#
+# marlin local policy
+#
+allow marlin_t self:process { fork };
+
+allow marlin_t self:fifo_file rw_fifo_file_perms;
+allow marlin_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(marlin_t, marlin_conf_t, marlin_conf_t)
+manage_files_pattern(marlin_t, marlin_conf_t, marlin_conf_t)
+
+manage_dirs_pattern(marlin_t, marlin_var_lib_t, marlin_var_lib_t)
+manage_files_pattern(marlin_t, marlin_var_lib_t, marlin_var_lib_t)
+files_var_lib_filetrans(marlin_t, marlin_var_lib_t, { dir file })
+
+manage_dirs_pattern(marlin_t, marlin_var_run_t, marlin_var_run_t)
+manage_files_pattern(marlin_t, marlin_var_run_t, marlin_var_run_t)
+
+sysnet_dns_name_resolve(marlin_t)
+corenet_all_recvfrom_unlabeled(marlin_t)
+
+allow marlin_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(marlin_t)
+corenet_tcp_sendrecv_generic_node(marlin_t)
+corenet_tcp_sendrecv_all_ports(marlin_t)
+corenet_tcp_bind_generic_node(marlin_t)
+
+gen_require(`
+    type marlin_port_t;
+')
+allow marlin_t marlin_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type marlin_port_t;
+')
+allow marlin_t marlin_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(marlin_t)
+
+files_read_etc_files(marlin_t)
+
+miscfiles_read_localization(marlin_t)
+
+sysnet_dns_name_resolve(marlin_t)
+
+allow marlin_t marlin_exec_t:file execute_no_trans;
+allow marlin_t self:process setsched;
+corecmd_exec_ls(marlin_t)
+corenet_tcp_connect_http_port(marlin_t)
+dev_read_urand(marlin_t)
+fs_getattr_xattr_fs(marlin_t)
+kernel_read_system_state(marlin_t)

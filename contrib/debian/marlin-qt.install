@@ -1,0 +1,6 @@
+usr/local/bin/marlin-qt usr/bin
+share/pixmaps/marlin32.xpm usr/share/pixmaps
+share/pixmaps/marlin16.xpm usr/share/pixmaps
+share/pixmaps/marlin128.png usr/share/pixmaps
+debian/marlin-qt.desktop usr/share/applications
+debian/marlin-qt.protocol usr/share/kde4/services/
