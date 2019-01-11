@@ -9,10 +9,10 @@
 
     Marlin should be started with the command line arguments:
         marlind -testnet -daemon \
-                -zmqpubhashblock=tcp://127.0.0.1:28766 \
-                -zmqpubrawtx=tcp://127.0.0.1:28766 \
-                -zmqpubhashtx=tcp://127.0.0.1:28766 \
-                -zmqpubhashblock=tcp://127.0.0.1:28766
+                -zmqpubhashblock=tcp://127.0.0.1:28998 \
+                -zmqpubrawtx=tcp://127.0.0.1:28998 \
+                -zmqpubhashtx=tcp://127.0.0.1:28998 \
+                -zmqpubhashblock=tcp://127.0.0.1:28998
 """
 
 import sys
@@ -26,7 +26,7 @@ context = zmq.Context()
 socket = context.socket(zmq.SUB)
 
 print("Getting Marlincoin msgs")
-socket.connect("tcp://localhost:28766")
+socket.connect("tcp://localhost:28998")
 
 socket.setsockopt_string(zmq.SUBSCRIBE, "hashtx")
 socket.setsockopt_string(zmq.SUBSCRIBE, "hashblock")

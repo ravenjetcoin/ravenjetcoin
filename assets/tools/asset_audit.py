@@ -12,7 +12,7 @@ import json
 cli = "marlin-cli"
 
 mode =  "-testnet"
-rpc_port = 18766
+rpc_port = 18998
 #mode =  "-regtest"
 #rpc_port = 18443
 

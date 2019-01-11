@@ -42,11 +42,11 @@ reachable from the Tor network. Add these lines to your /etc/tor/torrc (or equiv
 config file):
 
 	HiddenServiceDir /var/lib/tor/marlin-service/
-	HiddenServicePort 8767 127.0.0.1:8767
-	HiddenServicePort 18767 127.0.0.1:18767
+	HiddenServicePort 8999 127.0.0.1:8999
+	HiddenServicePort 18999 127.0.0.1:18999
 
 The directory can be different of course, but (both) port numbers should be equal to
-your marlind's P2P listen port (8767 by default).
+your marlind's P2P listen port (8999 by default).
 
 	-externalip=X   You can tell marlin about its publicly reachable address using
 	                this option, and this can be a .onion address. Given the above
@@ -81,7 +81,7 @@ as well, use `discover` instead:
 
 	./marlind ... -discover
 
-and open port 8767 on your firewall (or use -upnp).
+and open port 8999 on your firewall (or use -upnp).
 
 If you only want to use Tor to reach onion addresses, but not use it as a proxy
 for normal IPv4/IPv6 communication, use:

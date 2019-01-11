@@ -10,12 +10,12 @@ The solution is to speed up adoption is to run marlind in compatibility mode tha
 
 As an example, normally the rpc call for transferring MRL is   
 ```sendfrom "fromaccount" "toaddress" amount ( minconf "comment" "comment_to" )```   
-Ordinarily this call to marlind (port 8766) will transfer MRL
+Ordinarily this call to marlind (port 8998) will transfer MRL
 
 Configuring a different port for sending the TRONCO token will allow the same RPC call to transfer TRONCO instead of MRL.  The advantage is that the only change needed for compatibility with a system that can already handle BTC and MRL is to use the port configured for TRONCO, or whatever asset you'd like.
 
 ### Configuration
-Every Bitcoin-type, or Marlincoin-type coin uses a different RPC port.  For example, the standard RPC port for Bitcoin is 8332, and the standard RPC port for Marlincoin is 8766.
+Every Bitcoin-type, or Marlincoin-type coin uses a different RPC port.  For example, the standard RPC port for Bitcoin is 8332, and the standard RPC port for Marlincoin is 8998.
 
 An exchange can configure multiple Marlincoin assets by selecting a different port for each asset.  Once configured, marlind will emulate a marlind daemon with RPC calls that send the specified asset, instead of MRL.
 
