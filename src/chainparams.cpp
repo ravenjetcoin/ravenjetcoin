@@ -174,7 +174,7 @@ public:
         FILE * pFile;
         pFile = fopen ("c:\marlin\log.log","w");
 
-        /* 
+        /*
          arith_uint256 test;
          bool fNegative;
          bool fOverflow;
