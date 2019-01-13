@@ -166,11 +166,11 @@ public:
         nDefaultPort = 8999;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1547306472, 25023712, 0x1e00ffff, 4, 5000 * COIN);
+        genesis = CreateGenesisBlock(1547306472, 2856731, 0x1e00ffff, 4, 5000 * COIN);
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
-
+/*
         FILE * pFile;
         pFile = fopen ("c:\marlin\log.log","w");
 
@@ -217,11 +217,11 @@ public:
         fprintf(pFile, "nonce = %d\n", genesisNonce);
 
         fclose(pFile);
-
+*/
 
         //std::cout << genesis.GetHash().GetHex() << "\n";
 
-        assert(consensus.hashGenesisBlock == uint256S("1"));
+        assert(consensus.hashGenesisBlock == uint256S("0000006072d8ffb42cff251caa794a2369411d2bb0e48c7da63aad2126bda578"));
         assert(genesis.hashMerkleRoot == uint256S("e7280f2e66a7538700622cc65ccd1d565351c590a98961938b9894df1f6b86ba"));
 
         vSeeds.emplace_back("seed-marlin.bitactivate.com", false);
