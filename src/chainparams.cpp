@@ -219,7 +219,7 @@ public:
 
         //std::cout << genesis.GetHash().GetHex() << "\n";
 
-        assert(consensus.hashGenesisBlock == uint256S("c1b8b40feb5fc5863775413460eb5a614c2823028d362bca6d39d46e9589f4b3"));
+        assert(consensus.hashGenesisBlock == uint256S("1"));
         assert(genesis.hashMerkleRoot == uint256S("e7280f2e66a7538700622cc65ccd1d565351c590a98961938b9894df1f6b86ba"));
 
         vSeeds.emplace_back("seed-marlin.bitactivate.com", false);
