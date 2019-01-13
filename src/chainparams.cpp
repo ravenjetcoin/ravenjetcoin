@@ -118,19 +118,19 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
-        consensus.nSubsidyHalvingInterval = 2100000;  //~ 4 yrs at 1 min block time
+        consensus.nSubsidyHalvingInterval = 210000;  //~ 4 yrs at 1 min block time
         consensus.nBIP34Enabled = true;
         consensus.nBIP65Enabled = true; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
         consensus.nBIP66Enabled = true;
         consensus.nSegwitEnabled = true;
         consensus.nCSVEnabled = true;
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
-        consensus.nPowTargetSpacing = 1 * 60;
+        consensus.nPowTargetTimespan = 9 * 60; // 9 mins
+        consensus.nPowTargetSpacing = 9;
 		consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
-        consensus.nRuleChangeActivationThreshold = 1814; // Approx 90% of 2016
-        consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nRuleChangeActivationThreshold = 57; // 95% of 60
+        consensus.nMinerConfirmationWindow = 60; // nPowTargetTimespan / nPowTargetSpacing
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -166,7 +166,7 @@ public:
         nDefaultPort = 8999;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1547306472, 21216739, 0x1e00ffff, 4, 5000 * COIN);
+        genesis = CreateGenesisBlock(1547306472, 21216739, 0x1e00ffff, 4, 50 * COIN);
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
@@ -174,7 +174,6 @@ public:
         FILE * pFile;
         pFile = fopen ("c:\marlin\log.log","w");
 
-        /*
          arith_uint256 test;
          bool fNegative;
          bool fOverflow;
@@ -184,7 +183,7 @@ public:
          uint256 TempHashHolding = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
          uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
          for (int i=0;i<40000000;i++) {
-             genesis = CreateGenesisBlock(1547306472, i, 0x1e00ffff, 4, 5000 * COIN);
+             genesis = CreateGenesisBlock(1547306472, i, 0x1e00ffff, 4, 50 * COIN);
              consensus.hashGenesisBlock = genesis.GetHash();
 
              arith_uint256 BestBlockHashArith = UintToArith256(BestBlockHash);
@@ -200,7 +199,7 @@ public:
 
         fprintf(pFile, "hash = %s\n", BestBlockHash.ToString().c_str());
         fprintf(pFile, "merklehash: = %s\n", genesis.hashMerkleRoot.ToString().c_str());
-        fprintf(pFile, "nonce = %d\n", genesisNonce); */
+        fprintf(pFile, "nonce = %d\n", genesisNonce);
 
         fprintf(pFile, "hash = %s\n", genesis.GetHash().ToString().c_str());
         fprintf(pFile, "merklehash: = %s\n", genesis.hashMerkleRoot.ToString().c_str());
@@ -212,9 +211,11 @@ public:
         assert(consensus.hashGenesisBlock == uint256S("0x0000000c190edd8ee9ea5f03db61750ec5b50dd5cbdfcd835ba549578c07089b"));
         assert(genesis.hashMerkleRoot == uint256S("e7280f2e66a7538700622cc65ccd1d565351c590a98961938b9894df1f6b86ba"));
 
+        /*
         vSeeds.emplace_back("seed-marlin.bitactivate.com", false);
         vSeeds.emplace_back("seed-marlin.marlincoin.com", false);
         vSeeds.emplace_back("seed-marlin.marlincoin.org", false);
+        */
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,60);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,122);
@@ -238,10 +239,10 @@ public:
         chainTxData = ChainTxData{
             // Update as we know more about the contents of the Marlin chain
             // Stats as of 000000000000a72545994ce72b25042ea63707fca169ca4deb7f9dab4f1b1798 window size 43200
-            1543817453, // * UNIX timestamp of last known number of transactions
-            2033711,    // * total number of transactions between genesis and that timestamp
+            1547306472, // * UNIX timestamp of last known number of transactions
+            1,    // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
-            0.1         // * estimated number of transactions per second after that timestamp
+            1         // * estimated number of transactions per second after that timestamp
         };
 
         /** MRL Start **/
