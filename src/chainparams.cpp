@@ -214,7 +214,9 @@ public:
 
         fprintf(pFile, "hash = %s\n", BestBlockHash.ToString().c_str());
         fprintf(pFile, "merklehash: = %s\n", genesis.hashMerkleRoot.ToString().c_str());
-        fprintf(pFile, "nonce = %s\n", genesisNonce);
+        fprintf(pFile, "nonce = %d\n", genesisNonce);
+
+        fclose(pFile);
 
 
         //std::cout << genesis.GetHash().GetHex() << "\n";
