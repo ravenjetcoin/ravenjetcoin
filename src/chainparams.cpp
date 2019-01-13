@@ -170,7 +170,13 @@ public:
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        std::cout << genesis.GetHash().GetHex() << "\n";
+        FILE * pFile;
+        pFile = fopen ("c:\\marlin\log.log","w");
+
+        fprintf(pFile, "hash = %s\n", genesis.GetHash().ToString().c_str());
+        fprintf(pFile, "merklehash: = %s\n", genesis.hashMerkleRoot.ToString().c_str()); 
+
+        //std::cout << genesis.GetHash().GetHex() << "\n";
 
         assert(consensus.hashGenesisBlock == uint256S("0000006b444bc2f2ffe627be9d9e7e7a0730000870ef6eb6da46c8eae389df90"));
         assert(genesis.hashMerkleRoot == uint256S("28ff00a867739a352523808d301f504bc4547699398d70faf2266a8bae5f3516"));
