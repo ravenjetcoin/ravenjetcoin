@@ -174,8 +174,47 @@ public:
         FILE * pFile;
         pFile = fopen ("c:\marlin\log.log","w");
 
-        fprintf(pFile, "hash = %s\n", genesis.GetHash().ToString().c_str());
+
+         arith_uint256 test;
+         bool fNegative;
+         bool fOverflow;
+         test.SetCompact(0x1e00ffff, &fNegative, &fOverflow);
+
+         int genesisNonce = 0;
+         uint256 TempHashHolding = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
+         uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+         for (int i=0;i<40000000;i++) {
+             genesis = CreateGenesisBlock(1547306472, i, 0x1e00ffff, 2, 5000 * COIN);
+             genesis.hashPrevBlock = TempHashHolding;
+             consensus.hashGenesisBlock = genesis.GetHash();
+
+             arith_uint256 BestBlockHashArith = UintToArith256(BestBlockHash);
+             if (UintToArith256(consensus.hashGenesisBlock) < BestBlockHashArith) {
+                 BestBlockHash = consensus.hashGenesisBlock;
+                 //std::cout << BestBlockHash.GetHex() << " Nonce: " << i << "\n";
+                 //std::cout << "   PrevBlockHash: " << genesis.hashPrevBlock.GetHex() << "\n";
+             }
+
+             TempHashHolding = consensus.hashGenesisBlock;
+
+             if (BestBlockHashArith < test) {
+                 genesisNonce = i - 1;
+                 break;
+             }
+             //std::cout << consensus.hashGenesisBlock.GetHex() << "\n";
+         }
+
+ //        std::cout << "hashGenesisBlock to 0x" << BestBlockHash.GetHex() << std::endl;
+ //        std::cout << "Genesis Nonce to " << genesisNonce << std::endl;
+ //        std::cout << "Genesis Merkle " << genesis.hashMerkleRoot.GetHex() << std::endl;
+
+
+        //fprintf(pFile, "hash = %s\n", genesis.GetHash().ToString().c_str());
+        //fprintf(pFile, "merklehash: = %s\n", genesis.hashMerkleRoot.ToString().c_str());
+
+        fprintf(pFile, "hash = %s\n", BestBlockHash.ToString().c_str());
         fprintf(pFile, "merklehash: = %s\n", genesis.hashMerkleRoot.ToString().c_str());
+        fprintf(pFile, "nonce = %s\n", genesisNonce.ToString().c_str());
 
 
         //std::cout << genesis.GetHash().GetHex() << "\n";
