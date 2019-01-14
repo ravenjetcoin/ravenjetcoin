@@ -257,17 +257,16 @@ public:
 
         // Burn Addresses
         //strIssueAssetBurnAddress = "MXissueAssetXXXXXXXXXXXXXXXXXhhZGt";
-        strIssueAssetBurnAddress = "MBZ2Bgx2dnvW2mcRBZWpgJY14WX5oTQtZ7";
-
-        strReissueAssetBurnAddress = "MXReissueAssetXXXXXXXXXXXXXXVEFAWu";
-        strIssueSubAssetBurnAddress = "MXissueSubAssetXXXXXXXXXXXXXWcwhwL";
-        strIssueUniqueAssetBurnAddress = "MXissueUniqueAssetXXXXXXXXXXWEAe58";
+        strIssueAssetBurnAddress = "MXCryptoLifeDotNetBurnAddrXXY9SEys";
+        strReissueAssetBurnAddress = "MXCryptoLifeDotNetBurnAddrXXY9SEys";
+        strIssueSubAssetBurnAddress = "MXCryptoLifeDotNetBurnAddrXXY9SEys";
+        strIssueUniqueAssetBurnAddress = "MXCryptoLifeDotNetBurnAddrXXY9SEys";
 
         //Global Burn Address
-        strGlobalBurnAddress = "MXBurnXXXXXXXXXXXXXXXXXXXXXXWUo9FV";
+        strGlobalBurnAddress = "MXCryptoLifeDotNetBurnAddrXXY9SEys";
 
         // DGW Activation
-        nDGWActivationBlock = 200;
+        nDGWActivationBlock = 0;
 
         nMaxReorganizationDepth = 60; // 60 at 1 minute block timespan is +/- 60 minutes.
         nMinReorganizationPeers = 4;
