@@ -212,7 +212,7 @@ public:
         */
 
         assert(consensus.hashGenesisBlock == uint256S("0x00000047e17b3e6b1fe8603a21a459712f07521b62030497d20234cc2930b71a"));
-        assert(genesis.hashMerkleRoot == uint256S("e7280f2e66a7538700622cc65ccd1d565351c590a98961938b9894df1f6b86ba"));
+        assert(genesis.hashMerkleRoot == uint256S("8261d89bd34e815d4821c0f81991a9d13f4171b33e7172249f66e62883a5feea"));
 
 
         //vSeeds.emplace_back("seed-marlin.bitactivate.com", false);
