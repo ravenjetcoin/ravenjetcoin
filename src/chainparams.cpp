@@ -166,7 +166,7 @@ public:
         nDefaultPort = 8999;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1547306472, 21216739, 0x1e00ffff, 4, 50 * COIN);
+        genesis = CreateGenesisBlock(1547489377, 21216739, 0x1e00ffff, 4, 50 * COIN);
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
@@ -183,7 +183,7 @@ public:
          uint256 TempHashHolding = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
          uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
          for (int i=0;i<40000000;i++) {
-             genesis = CreateGenesisBlock(1547306472, i, 0x1e00ffff, 4, 50 * COIN);
+             genesis = CreateGenesisBlock(1547489377, i, 0x1e00ffff, 4, 50 * COIN);
              consensus.hashGenesisBlock = genesis.GetHash();
 
              arith_uint256 BestBlockHashArith = UintToArith256(BestBlockHash);
@@ -217,9 +217,9 @@ public:
         vSeeds.emplace_back("seed-marlin.marlincoin.org", false);
         */
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,60);
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,122);
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,50);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,110);
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,138);
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
 
@@ -239,7 +239,7 @@ public:
         chainTxData = ChainTxData{
             // Update as we know more about the contents of the Marlin chain
             // Stats as of 000000000000a72545994ce72b25042ea63707fca169ca4deb7f9dab4f1b1798 window size 43200
-            1547306472, // * UNIX timestamp of last known number of transactions
+            1547489377, // * UNIX timestamp of last known number of transactions
             1,    // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
             1         // * estimated number of transactions per second after that timestamp
@@ -247,22 +247,22 @@ public:
 
         /** MRL Start **/
         // Burn Amounts
-        nIssueAssetBurnAmount = 500 * COIN;
-        nReissueAssetBurnAmount = 100 * COIN;
-        nIssueSubAssetBurnAmount = 100 * COIN;
-        nIssueUniqueAssetBurnAmount = 5 * COIN;
+        nIssueAssetBurnAmount = 5 * COIN;
+        nReissueAssetBurnAmount = 1 * COIN;
+        nIssueSubAssetBurnAmount = 1 * COIN;
+        nIssueUniqueAssetBurnAmount = 0.05 * COIN;
 
         // Burn Addresses
-        strIssueAssetBurnAddress = "RXissueAssetXXXXXXXXXXXXXXXXXhhZGt";
-        strReissueAssetBurnAddress = "RXReissueAssetXXXXXXXXXXXXXXVEFAWu";
-        strIssueSubAssetBurnAddress = "RXissueSubAssetXXXXXXXXXXXXXWcwhwL";
-        strIssueUniqueAssetBurnAddress = "RXissueUniqueAssetXXXXXXXXXXWEAe58";
+        strIssueAssetBurnAddress = "MXissueAssetXXXXXXXXXXXXXXXXXhhZGt";
+        strReissueAssetBurnAddress = "MXReissueAssetXXXXXXXXXXXXXXVEFAWu";
+        strIssueSubAssetBurnAddress = "MXissueSubAssetXXXXXXXXXXXXXWcwhwL";
+        strIssueUniqueAssetBurnAddress = "MXissueUniqueAssetXXXXXXXXXXWEAe58";
 
         //Global Burn Address
-        strGlobalBurnAddress = "RXBurnXXXXXXXXXXXXXXXXXXXXXXWUo9FV";
+        strGlobalBurnAddress = "MXBurnXXXXXXXXXXXXXXXXXXXXXXWUo9FV";
 
         // DGW Activation
-        nDGWActivationBlock = 338778;
+        nDGWActivationBlock = 200;
 
         nMaxReorganizationDepth = 60; // 60 at 1 minute block timespan is +/- 60 minutes.
         nMinReorganizationPeers = 4;
