@@ -256,7 +256,9 @@ public:
         nIssueUniqueAssetBurnAmount = 0.05 * COIN;
 
         // Burn Addresses
-        strIssueAssetBurnAddress = "MXissueAssetXXXXXXXXXXXXXXXXXhhZGt";
+        //strIssueAssetBurnAddress = "MXissueAssetXXXXXXXXXXXXXXXXXhhZGt";
+        strIssueAssetBurnAddress = "MBZ2Bgx2dnvW2mcRBZWpgJY14WX5oTQtZ7"
+
         strReissueAssetBurnAddress = "MXReissueAssetXXXXXXXXXXXXXXVEFAWu";
         strIssueSubAssetBurnAddress = "MXissueSubAssetXXXXXXXXXXXXXWcwhwL";
         strIssueUniqueAssetBurnAddress = "MXissueUniqueAssetXXXXXXXXXXWEAe58";
