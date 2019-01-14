@@ -166,10 +166,11 @@ public:
         nDefaultPort = 8999;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1547489377, 21216739, 0x1e00ffff, 4, 50 * COIN);
+        genesis = CreateGenesisBlock(1547489377, 16532304, 0x1e00ffff, 4, 50 * COIN);
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
+        /*
 
         FILE * pFile;
         pFile = fopen ("c:\marlin\log.log","w");
@@ -208,14 +209,16 @@ public:
 
         //std::cout << genesis.GetHash().GetHex() << "\n";
 
-        assert(consensus.hashGenesisBlock == uint256S("0x0000000c190edd8ee9ea5f03db61750ec5b50dd5cbdfcd835ba549578c07089b"));
+        */
+
+        assert(consensus.hashGenesisBlock == uint256S("0x00000047e17b3e6b1fe8603a21a459712f07521b62030497d20234cc2930b71a"));
         assert(genesis.hashMerkleRoot == uint256S("e7280f2e66a7538700622cc65ccd1d565351c590a98961938b9894df1f6b86ba"));
 
-        /*
-        vSeeds.emplace_back("seed-marlin.bitactivate.com", false);
-        vSeeds.emplace_back("seed-marlin.marlincoin.com", false);
-        vSeeds.emplace_back("seed-marlin.marlincoin.org", false);
-        */
+
+        //vSeeds.emplace_back("seed-marlin.bitactivate.com", false);
+        //vSeeds.emplace_back("seed-marlin.marlincoin.com", false);
+        //vSeeds.emplace_back("seed-marlin.marlincoin.org", false);
+
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,50);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,110);
