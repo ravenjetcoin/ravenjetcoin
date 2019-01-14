@@ -257,7 +257,7 @@ public:
 
         // Burn Addresses
         //strIssueAssetBurnAddress = "MXissueAssetXXXXXXXXXXXXXXXXXhhZGt";
-        strIssueAssetBurnAddress = "MBZ2Bgx2dnvW2mcRBZWpgJY14WX5oTQtZ7"
+        strIssueAssetBurnAddress = "MBZ2Bgx2dnvW2mcRBZWpgJY14WX5oTQtZ7";
 
         strReissueAssetBurnAddress = "MXReissueAssetXXXXXXXXXXXXXXVEFAWu";
         strIssueSubAssetBurnAddress = "MXissueSubAssetXXXXXXXXXXXXXWcwhwL";
