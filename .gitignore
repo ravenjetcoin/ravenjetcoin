@@ -124,3 +124,4 @@ cmake-build-debug
 
 CMakeLists.txt
 *.iml
+*.iml___jb_tmp___
