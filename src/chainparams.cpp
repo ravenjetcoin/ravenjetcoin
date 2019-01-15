@@ -118,7 +118,7 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
-        consensus.nSubsidyHalvingInterval = 210000;  //~ 4 yrs at 1 min block time
+        consensus.nSubsidyHalvingInterval = 210000;  //~ 22 days at 9 sec block time
         consensus.nBIP34Enabled = false;
         consensus.nBIP65Enabled = true; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
         consensus.nBIP66Enabled = true;
@@ -166,58 +166,12 @@ public:
         nDefaultPort = 8999;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1547489377, 16532304, 0x1e00ffff, 4, 50 * COIN);
+        genesis = CreateGenesisBlock(1547577891, 16532304, 0x1e00ffff, 4, 50 * COIN);
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        /*
-
-        FILE * pFile;
-        pFile = fopen ("c:\marlin\log.log","w");
-
-         arith_uint256 test;
-         bool fNegative;
-         bool fOverflow;
-         test.SetCompact(0x1e00ffff, &fNegative, &fOverflow);
-
-         int genesisNonce = 0;
-         uint256 TempHashHolding = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
-         uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-         for (int i=0;i<40000000;i++) {
-             genesis = CreateGenesisBlock(1547489377, i, 0x1e00ffff, 4, 50 * COIN);
-             consensus.hashGenesisBlock = genesis.GetHash();
-
-             arith_uint256 BestBlockHashArith = UintToArith256(BestBlockHash);
-             if (UintToArith256(consensus.hashGenesisBlock) < BestBlockHashArith) {
-                 BestBlockHash = consensus.hashGenesisBlock;
-                 genesisNonce = i;
-             }
-
-             if (BestBlockHashArith < test) {
-                 break;
-             }
-         }
-
-        fprintf(pFile, "hash = %s\n", BestBlockHash.ToString().c_str());
-        fprintf(pFile, "merklehash: = %s\n", genesis.hashMerkleRoot.ToString().c_str());
-        fprintf(pFile, "nonce = %d\n", genesisNonce);
-
-        fprintf(pFile, "hash = %s\n", genesis.GetHash().ToString().c_str());
-        fprintf(pFile, "merklehash: = %s\n", genesis.hashMerkleRoot.ToString().c_str());
-
-        fclose(pFile);
-
-        //std::cout << genesis.GetHash().GetHex() << "\n";
-
-        */
-
         assert(consensus.hashGenesisBlock == uint256S("0x00000047e17b3e6b1fe8603a21a459712f07521b62030497d20234cc2930b71a"));
         assert(genesis.hashMerkleRoot == uint256S("8261d89bd34e815d4821c0f81991a9d13f4171b33e7172249f66e62883a5feea"));
-
-
-        //vSeeds.emplace_back("seed-marlin.bitactivate.com", false);
-        //vSeeds.emplace_back("seed-marlin.marlincoin.com", false);
-        //vSeeds.emplace_back("seed-marlin.marlincoin.org", false);
 
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,50);
@@ -242,7 +196,7 @@ public:
         chainTxData = ChainTxData{
             // Update as we know more about the contents of the Marlin chain
             // Stats as of 000000000000a72545994ce72b25042ea63707fca169ca4deb7f9dab4f1b1798 window size 43200
-            1547489377, // * UNIX timestamp of last known number of transactions
+            1547577891, // * UNIX timestamp of last known number of transactions
             1,    // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
             1         // * estimated number of transactions per second after that timestamp
@@ -268,7 +222,7 @@ public:
         // DGW Activation
         nDGWActivationBlock = 0;
 
-        nMaxReorganizationDepth = 60; // 60 at 1 minute block timespan is +/- 60 minutes.
+        nMaxReorganizationDepth = 60; // 60 at 9 sec block timespan is +/- 9 minutes.
         nMinReorganizationPeers = 4;
         nMinReorganizationAge = 60 * 60 * 12; // 12 hours
         /** MRL End **/
