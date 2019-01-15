@@ -170,6 +170,41 @@ public:
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
+                FILE * pFile;
+                pFile = fopen ("c:\marlin\log.log","w");
+
+                 arith_uint256 test;
+                 bool fNegative;
+                 bool fOverflow;
+                 test.SetCompact(0x1e00ffff, &fNegative, &fOverflow);
+
+                 int genesisNonce = 0;
+                 uint256 TempHashHolding = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
+                 uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+                 for (int i=0;i<40000000;i++) {
+                     genesis = CreateGenesisBlock(1547489377, i, 0x1e00ffff, 4, 50 * COIN);
+                     consensus.hashGenesisBlock = genesis.GetHash();
+
+                     arith_uint256 BestBlockHashArith = UintToArith256(BestBlockHash);
+                     if (UintToArith256(consensus.hashGenesisBlock) < BestBlockHashArith) {
+                         BestBlockHash = consensus.hashGenesisBlock;
+                         genesisNonce = i;
+                     }
+
+                     if (BestBlockHashArith < test) {
+                         break;
+                     }
+                 }
+
+                fprintf(pFile, "hash = %s\n", BestBlockHash.ToString().c_str());
+                fprintf(pFile, "merklehash: = %s\n", genesis.hashMerkleRoot.ToString().c_str());
+                fprintf(pFile, "nonce = %d\n", genesisNonce);
+
+                fprintf(pFile, "hash = %s\n", genesis.GetHash().ToString().c_str());
+                fprintf(pFile, "merklehash: = %s\n", genesis.hashMerkleRoot.ToString().c_str());
+
+                fclose(pFile);
+
         assert(consensus.hashGenesisBlock == uint256S("0x00000047e17b3e6b1fe8603a21a459712f07521b62030497d20234cc2930b71a"));
         assert(genesis.hashMerkleRoot == uint256S("8261d89bd34e815d4821c0f81991a9d13f4171b33e7172249f66e62883a5feea"));
 
