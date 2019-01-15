@@ -182,7 +182,7 @@ public:
                  uint256 TempHashHolding = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
                  uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
                  for (int i=0;i<40000000;i++) {
-                     genesis = CreateGenesisBlock(1547489377, i, 0x1e00ffff, 4, 50 * COIN);
+                     genesis = CreateGenesisBlock(1547577891, i, 0x1e00ffff, 4, 50 * COIN);
                      consensus.hashGenesisBlock = genesis.GetHash();
 
                      arith_uint256 BestBlockHashArith = UintToArith256(BestBlockHash);
